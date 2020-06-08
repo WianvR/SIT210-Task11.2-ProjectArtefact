@@ -16,7 +16,7 @@ Adafruit_BMP280 bmp;
 Adafruit_TSL2591 tsl;
 //I2CSlave device(Wire, 0x10,10);
 
-const unsigned long PERIOD = 60000;
+const unsigned long PERIOD = 5000;
 const char* WEBHOOK_NAME = "Ubidots";
 
 bool sensorReady = false;
@@ -85,7 +85,7 @@ void loop()
         ubidots.add("Moisture", soilSensor);
         
         bool bufferSent = false;
-        //bufferSent = ubidots.send(WEBHOOK_NAME, PUBLIC);  // sends data
+        bufferSent = ubidots.send(WEBHOOK_NAME, PUBLIC);  // sends data
 
          if(bufferSent)
          {
